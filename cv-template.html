@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:300,400,700"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <link href="../cv.css" rel="stylesheet">
+    <link href="cv.css" rel="stylesheet">
+    <script type="text/javascript" src="images.js"></script>
 </head>
 
 <body id="top" class="">
@@ -54,7 +55,7 @@
                 </div>
 
                 <div class="m-photo-right">
-                    <img id="contact-information-photo" src="data:image/png;base64,###PROFILE_PHOTO###">
+                    <img id="profile-photo" src="data:image/png;base64,###PROFILE_PHOTO###">
                 </div>
 
                 <div class="preview_hover_container"></div>
@@ -126,7 +127,7 @@
                         </h4>
 
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/png;base64,###IST_UNI_LOGO###" width="80">
+                            <img id="ist-uni-logo" src="data:image/png;base64,###IST_UNI_LOGO###" width="80">
                         </span>
 
                         <span class="m-txt-subLabel" style="margin-top: 10px;">
@@ -155,7 +156,7 @@
                         </h4>
 
                         <span class="m-txt-subLabel ml-25">
-                            <img class="wh-80" src="data:image/png;base64,###FAL_LOGO###" />
+                            <img id="fal-logo" class="wh-80" src="data:image/png;base64,###FAL_LOGO###" />
                         </span>
 
                         <span class="m-txt-subLabel">
@@ -195,7 +196,7 @@
                             <b>EASY Software</b>
                         </span>
                         <span class="m-txt-subLabel company-logo" style="margin-left: -40px;">
-                            <img style="width: 90%;" src="data:image/png;base64,###EASY_LOGO###" width="120" />
+                            <img id="easy-logo" style="width: 90%;" src="data:image/png;base64,###EASY_LOGO###" width="120" />
                         </span>
                         <span class="m-txt-subLabel">
                             Istanbul <span class="town">( Maltepe )</span>
@@ -267,7 +268,7 @@
                             <b>OBSS</b>
                         </span>
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/png;base64,###OBSS_LOGO###" width="120" />
+                            <img id="obss-logo" src="data:image/png;base64,###OBSS_LOGO###" width="120" />
                         </span>
                         <span class="m-txt-subLabel">
                             Istanbul <span class="town">( Kurtköy )</span>
@@ -303,12 +304,11 @@
                             Software Engineer
                         </h4>
 
-
                         <span class="m-txt-subLabel">
                             <b>Huawei Technologies</b>
                         </span>
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/jpeg;base64,###HUAWEI_LOGO###" width="80" />
+                            <img id="huawei-logo" src="data:image/jpeg;base64,###HUAWEI_LOGO###" width="80" />
                         </span>
                         <span class="m-txt-subLabel">
                             Istanbul <span class="town">( Ümraniye )</span>
@@ -352,7 +352,7 @@
                             <b>Ader Bilgisayar Hizmetleri ve Ticaret A.Ş.</b>
                         </span>
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/png;base64,###ADER_LOGO###"
+                            <img id="ader-logo" src="data:image/png;base64,###ADER_LOGO###"
                             width="120"style="margin:10px;" />
                         </span>
                         <span class="m-txt-subLabel">
@@ -390,12 +390,11 @@
                             Java Software Developer
                         </h4>
 
-
                         <span class="m-txt-subLabel">
                             <b>Emlaktown GmbH</b>
                         </span>
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/png;base64,###EMLAKTOWN_LOGO###"
+                            <img id="emlaktown-logo" src="data:image/png;base64,###EMLAKTOWN_LOGO###"
                                 width="120" style="margin: 10px;" />
                         </span>
                         <span class="m-txt-subLabel">
@@ -432,12 +431,11 @@
                             Software Developer
                         </h4>
 
-
                         <span class="m-txt-subLabel">
                             <b>XYZ Software Information and Communication Technologies</b>
                         </span>
                         <span class="m-txt-subLabel ml-25">
-                            <img src="data:image/png;base64,###XYZ_LOGO###"
+                            <img id="xyz-logo" src="data:image/png;base64,###XYZ_LOGO###"
                                 width="120" style="margin: 10px;" />
                         </span>
                         <span class="m-txt-subLabel">
@@ -544,7 +542,6 @@
                     var start = interval.split('-')[0];
                     var end = interval.split('-')[1];
 
-                    console.log(start + ' - ' + (end.length > 0 ? end : (new Date().getFullYear() + '.' + (new Date().getMonth() + 1))));
                     var now = new Date();
 
                     var startYear = Number.parseInt(start.split('.')[0]);
@@ -556,7 +553,6 @@
                     var diff = (endYear - startYear) * 12 + endMonth - startMonth + 1;
                     let year = Number.parseInt(diff / 12);
                     let month = diff % 12;
-                    console.log('Diff: ' + diff + ' months => ' + year + 'year' + (year > 1 ? 's ' : ' ') + month + 'months');
 
                     var yearText = year <= 0 ? '' : (year + ' year' + (year > 1 ? 's ' : ' '));
                     var monthText = month <= 0 ? '' : (month + ' month' + (month > 1 ? 's ' : ' '));
@@ -574,6 +570,19 @@
 
             console.log('Calculated: ' + year);
             document.getElementById('exp-years').innerHTML = year;
+
+            console.log('Processing images...');
+
+            let data = JSON.parse(images);
+            
+            for(var i=0; i < data.length; i++) {
+                let img = data[i];
+
+                var element = document.getElementById(img.id);
+                var imgSrc = element.getAttribute('src');
+                element.setAttribute('src', imgSrc.replace('###' + img.key + '###', img.value));
+            }
+
         </script>
 </body>
 
