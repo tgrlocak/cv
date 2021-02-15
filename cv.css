@@ -159,7 +159,7 @@ table {
     text-align: right;
     padding-right: 9px;
     display: block;
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
     font-weight: 600
 }
 
@@ -190,7 +190,7 @@ table {
 }
 
 .m-txt-Label {
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
     font-size: 10px;
     margin-bottom: 0;
     font-weight: 600;
@@ -200,7 +200,7 @@ table {
 .m-txt-Label-second {
     font-size: 15px;
     font-weight: 600;
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
     margin-bottom: 5px
 }
 
@@ -215,7 +215,7 @@ table {
 }
 
 body {
-    font-family: Merriweather, serif;
+    font-family: Merriweather, Arial, Helvetica, sans-serif, serif;
     line-height: 18px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
     text-rendering: optimizeLegibility;
@@ -393,6 +393,11 @@ body {
     height: 80px;
 }
 
+.wh-90 {
+    width: 90px;
+    height: 90px;
+}
+
 .ml-25 {
     margin-left: 25px;
 }
@@ -401,12 +406,20 @@ body {
     margin-left: 20px;
 }
 
+.ml-m5 {
+    margin-left: -5px;
+}
+
 .p-10 {
     padding: 10px;
 }
 
 interval {
     visibility: hidden;
+    display: none;
+}
+
+.none {
     display: none;
 }
 
